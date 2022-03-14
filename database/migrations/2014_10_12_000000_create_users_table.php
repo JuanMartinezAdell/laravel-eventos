@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('users', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
             $table->string('name');
             $table->string('surname');
             $table->string('address');
@@ -31,6 +31,10 @@ return new class extends Migration
             $table->rememberToken();
             $table->foreignId('current_team_id')->nullable();
             $table->string('profile_photo_path', 2048)->nullable();
+
+            $table->unsignedBigInteger('categoria_asistente_id');
+            $table->foreign('categoria_asistente_id')->references('id')->on('categoria_asistentes');
+
             $table->timestamps();
         });
     }

@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('eventos', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
 
             $table->string('name');
             $table->date('fecha');
@@ -29,6 +29,9 @@ return new class extends Migration
 
             $table->unsignedBigInteger('inscripcion_id');
             $table->foreign('inscripcion_id')->references('id')->on('inscripcions');
+
+            $table->unsignedBigInteger('categoria_evento_id');
+            $table->foreign('categoria_evento_id')->references('id')->on('categoria_eventos');
 
             $table->timestamps();
         });

@@ -20,4 +20,10 @@ class Evento extends Model
     {
         return $this->BelongsTo(Inscripcion::class);
     }
+
+    //Relacion muchos a muchos
+    public function users()
+    {
+        return $this->belongsToMany(User::class);
+    }
 }

@@ -14,12 +14,10 @@ return new class extends Migration
     public function up()
     {
         Schema::create('categoria_eventos', function (Blueprint $table) {
-            $table->id();
+
+            $table->bigIncrements('id');
 
             $table->string('servicio');
-
-            $table->unsignedBigInteger('evento_id');
-            $table->foreign('evento_id')->references('id')->on('eventos');
 
             $table->timestamps();
         });
